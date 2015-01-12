@@ -33,14 +33,13 @@ public class CassandraIngestTask implements Runnable {
 		this.maxFutures = maxFutures;
 	}
 
-	@Override
 	public void run() {
 
 		long threadId = Thread.currentThread().getId();
 		
 		LOGGER.info("Thread {} is starting...", threadId);
 		
-		List<ResultSetFuture> resultFutures = new ArrayList<>(maxFutures);
+		List<ResultSetFuture> resultFutures = new ArrayList<ResultSetFuture>(maxFutures);
 		
 		for (int i = 0; i < numInserts; i++) {			
 			
